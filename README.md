@@ -2,17 +2,13 @@
 
 # Terminal screenshots that actually look like your terminal
 
-> **Version:** v1.0.0
-
-[![Version](https://img.shields.io/badge/Version-v1.0.0-blue.svg)](#) [![Marketplace installs](https://vsmarketplacebadges.dev/installs/arelius-d.clisnap.svg?label=marketplace%20installs&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=arelius-d.clisnap) [![VS Code](https://img.shields.io/badge/VS_Code-1.93%2B-%23007ACC.svg?logo=visualstudiocode&logoColor=white)](#requirements) [![Formats](https://img.shields.io/badge/Formats-SVG_%7C_PNG_%7C_HTML-blueviolet.svg)](#output-formats) [![Deps](https://img.shields.io/badge/Dependencies-none-brightgreen.svg)](#footprint) [![Network](https://img.shields.io/badge/Network_access-none-brightgreen.svg)](#footprint)
+[![Version](https://img.shields.io/github/v/release/Arelius-D/CLIsnap?label=version&color=blue)](https://github.com/Arelius-D/CLIsnap/releases) [![Marketplace installs](https://vsmarketplacebadges.dev/installs/arelius-d.clisnap.svg?label=marketplace%20installs&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=arelius-d.clisnap) [![License](https://img.shields.io/github/license/Arelius-D/CLIsnap?color=blue)](https://github.com/Arelius-D/CLIsnap/blob/main/LICENSE) [![VS Code](https://img.shields.io/badge/VS_Code-1.93%2B-%23007ACC.svg?logo=visualstudiocode&logoColor=white)](#requirements) [![Formats](https://img.shields.io/badge/Formats-SVG_%7C_PNG_%7C_HTML-blueviolet.svg)](#output-formats) [![Deps](https://img.shields.io/badge/Dependencies-none-brightgreen.svg)](#footprint) [![Network](https://img.shields.io/badge/Network_access-none-brightgreen.svg)](#footprint)
 
 Select output in the VS Code terminal, press a key, get an SVG, HTML or PNG.
 
 **By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change if you want to: any theme you have installed, any window frame, any size.
 
-| | |
-| --- | --- |
-| <img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="290"> | <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="290"> |
+<img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="230"> <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="230">
 
 The same capture twice. On the left, VS Code Dark with a Windows frame. On the right, Catppuccin Macchiato with a macOS frame. Neither is a CLIsnap theme; both came from the editor.
 

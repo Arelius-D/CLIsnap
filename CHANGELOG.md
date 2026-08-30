@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.3] - 2026-08-30
+
+Readme screenshots reduced to 230px so they sit side by side in the Extensions
+view and on the marketplace rather than stacking.
+
 ## [1.0.2] - 2026-08-30
 
 Screenshots in the readme sit side by side in the narrower panes used by the
