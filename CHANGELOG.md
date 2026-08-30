@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.1] - 2026-08-30
+
+Automated releases. Tagging a version now type-checks, builds, packages, verifies
+that nothing internal is in the package, publishes to the marketplace, and
+attaches the `.vsix` to the GitHub release.
+
 ## [1.0.0] - 2026-08-30
 
 First public release. What CLIsnap is and what it does is described in the README; there is
