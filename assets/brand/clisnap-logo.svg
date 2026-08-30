@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1022 353" width="1022" height="353" role="img" aria-label="CLIsnap">
+  <title>CLIsnap</title>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00c9b0"/><stop offset="100%" stop-color="#0057ff"/></linearGradient><linearGradient id="m" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9b0"/><stop offset="100%" stop-color="#0057ff"/></linearGradient></defs>
+  <g transform="translate(-55.26 -32.55) scale(0.9461)"
+     fill="none" stroke-width="24" stroke-linecap="square" stroke-linejoin="round">
+    <g stroke="url(#m)">
+      <path d="M100 166V107Q100 76 131 76H198"/>
+      <path d="M290 76H357Q389 76 389 108V166"/>
+      <path d="M100 264V322Q100 349 129 349H198"/>
+      <path d="M290 349H359Q389 349 389 319V264"/>
+    </g>
+    <g stroke="#596973">
+      <path d="M172 146L248 215L172 282"/>
+    </g>
+  </g>
+  <text x="382" y="293" font-family="Segoe UI, Inter, system-ui, -apple-system, Helvetica Neue, Arial, sans-serif" font-size="152" font-weight="400" letter-spacing="3"><tspan fill="#6a7e8a">C</tspan><tspan fill="#80929d">L</tspan><tspan fill="#97a6af">I</tspan><tspan fill="url(#g)">snap</tspan></text>
+</svg>

@@ -1,0 +1,128 @@
+{
+  "name": "clisnap",
+  "displayName": "CLIsnap",
+  "description": "Turn a terminal selection into an SVG, HTML or PNG that looks exactly like your terminal",
+  "version": "1.0.0",
+  "publisher": "arelius-d",
+  "license": "MIT",
+  "icon": "assets/brand/icon-256.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Arelius-D/CLIsnap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Arelius-D/CLIsnap/issues"
+  },
+  "homepage": "https://github.com/Arelius-D/CLIsnap#readme",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "terminal",
+    "screenshot",
+    "capture",
+    "svg",
+    "png",
+    "export",
+    "theme",
+    "ansi"
+  ],
+  "activationEvents": [
+    "onCommand:clisnap.capture",
+    "onCommand:clisnap.captureAndSave",
+    "onCommand:clisnap.captureFromFile"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "clisnap.captureAndSave",
+        "title": "CLIsnap: Capture and Save"
+      },
+      {
+        "command": "clisnap.capture",
+        "title": "CLIsnap: Capture and Preview"
+      },
+      {
+        "command": "clisnap.captureFromFile",
+        "title": "CLIsnap: Render a Text File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "clisnap.captureAndSave",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "terminalFocus && terminalTextSelected"
+      }
+    ],
+    "configuration": {
+      "title": "CLIsnap",
+      "properties": {
+        "clisnap.frame": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "windows",
+            "macos",
+            "linux",
+            "none"
+          ],
+          "enumDescriptions": [
+            "Match the operating system the shell runs on",
+            "Windows caption buttons",
+            "macOS traffic lights",
+            "Linux header bar",
+            "No window frame"
+          ],
+          "default": "auto",
+          "description": "Window frame drawn around the capture."
+        },
+        "clisnap.fontSize": {
+          "type": "number",
+          "default": 14,
+          "minimum": 8,
+          "maximum": 32,
+          "description": "Font size of the rendered output, in pixels."
+        },
+        "clisnap.theme": {
+          "type": "string",
+          "default": "",
+          "description": "Theme to render with, as \"publisher.extension/Theme Name\". Leave empty to use the theme active when the capture was taken."
+        },
+        "clisnap.format": {
+          "type": "string",
+          "enum": [
+            "svg",
+            "html",
+            "png"
+          ],
+          "default": "svg",
+          "enumDescriptions": [
+            "Vector, scalable, editable",
+            "Self-contained document with live text",
+            "Raster at 2x — opens the preview panel, since rasterising needs a canvas"
+          ],
+          "description": "Format written by \"Capture and Save\"."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package --out out/",
+    "preflight": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tools/tsconfig.json && node esbuild.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.93.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  }
+}

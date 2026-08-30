@@ -1,0 +1,33 @@
+# Everything that must NOT go into the published .vsix.
+# The extension ships dist/, media/, package.json, README, LICENSE — nothing else.
+
+# ---- sources: only the bundle ships ------------------------------------
+src/**
+tools/**
+docs/**
+bin/**
+**/*.ts
+**/*.map
+tsconfig.json
+esbuild.mjs
+
+# ---- dev environment ----------------------------------------------------
+.vscode/**
+.github/**
+.gitignore
+.vscodeignore
+node_modules/**
+
+# ---- brand source art: only the marketplace icon ships ------------------
+assets/brand/**
+!assets/brand/icon-256.png
+assets/screenshots/**
+
+# ---- scratch ------------------------------------------------------------
+out/**
+**/*.log
+**/*.bak
+**/*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini

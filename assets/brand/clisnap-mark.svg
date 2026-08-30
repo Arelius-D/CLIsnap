@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="CLIsnap">
+  <title>CLIsnap mark</title>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00c9b0"/><stop offset="100%" stop-color="#0057ff"/></linearGradient><linearGradient id="m" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00c9b0"/><stop offset="100%" stop-color="#0057ff"/></linearGradient></defs>
+  <g transform="translate(-47.96 -8.18) scale(1.2432)"
+     fill="none" stroke-width="24" stroke-linecap="square" stroke-linejoin="round">
+    <g stroke="url(#m)">
+      <path d="M100 166V107Q100 76 131 76H198"/>
+      <path d="M290 76H357Q389 76 389 108V166"/>
+      <path d="M100 264V322Q100 349 129 349H198"/>
+      <path d="M290 349H359Q389 349 389 319V264"/>
+    </g>
+    <g stroke="#596973">
+      <path d="M172 146L248 215L172 282"/>
+    </g>
+  </g>
+</svg>

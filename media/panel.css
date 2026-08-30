@@ -1,0 +1,77 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 12px;
+  font-family: var(--vscode-font-family);
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  background: var(--vscode-editor-background);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--vscode-widget-border, transparent);
+  border-radius: 6px;
+  background: var(--vscode-sideBar-background);
+}
+
+.toolbar .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.toolbar label { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.spacer { flex: 1; }
+
+.num {
+  display: inline-block;
+  width: 2.2ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#theme { max-width: 240px; }
+
+select, input[type="range"] {
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border, transparent);
+  border-radius: 4px;
+  padding: 3px 5px;
+  font-size: 12px;
+}
+
+button {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+}
+
+button.primary {
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.meta {
+  padding: 8px 2px;
+  opacity: 0.65;
+  font-family: var(--vscode-editor-font-family);
+}
+
+.preview { overflow: auto; padding: 8px 0; }
+.preview svg { display: block; }

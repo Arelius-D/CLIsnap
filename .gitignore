@@ -1,0 +1,86 @@
+# The repository contains the product, not how it is made.
+# Anything internal — tooling, harnesses, probes, fixtures, notes, dev
+# environment config — stays local. A fork gets the extension source and
+# nothing else; they can build their own workflow.
+
+# ---- build output -------------------------------------------------------
+dist/
+out/
+*.vsix
+*.tsbuildinfo
+
+# ---- dependencies -------------------------------------------------------
+node_modules/
+.pnp.*
+.yarn/
+
+# ---- logs and crash dumps ----------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.dmp
+
+# ---- editor and tooling scratch ----------------------------------------
+.eslintcache
+.cache/
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ---- backups and swap files --------------------------------------------
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*~
+*.swp
+*.swo
+.#*
+# "#" opens a comment, so a literal leading # must be escaped:
+\#*#
+
+# ---- Windows shell droppings -------------------------------------------
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+*.lnk
+
+# ---- macOS --------------------------------------------------------------
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ---- Linux --------------------------------------------------------------
+.directory
+.Trash-*
+.nfs*
+
+# ---- local secrets and machine-specific settings ------------------------
+.env
+.env.*
+*.pem
+*.key
+
+# ---- internal: never published ------------------------------------------
+# design notes and roadmap
+docs/
+# build, dev host, harness and preflight scripts
+bin/
+# harness, probes, captured fixtures
+tools/
+# launch and task configuration
+.vscode/
