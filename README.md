@@ -10,7 +10,9 @@ Select output in the VS Code terminal, press a key, get an SVG, HTML or PNG.
 
 **By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change if you want to: any theme you have installed, any window frame, any size.
 
-<img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="380"> <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="380">
+| | |
+| --- | --- |
+| <img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="290"> | <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="290"> |
 
 The same capture twice. On the left, VS Code Dark with a Windows frame. On the right, Catppuccin Macchiato with a macOS frame. Neither is a CLIsnap theme; both came from the editor.
 

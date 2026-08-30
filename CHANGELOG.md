@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2026-08-30
+
+Screenshots in the readme sit side by side in the narrower panes used by the
+Extensions view and the marketplace, instead of stacking.
+
 ## [1.0.1] - 2026-08-30
 
 Automated releases. Tagging a version now type-checks, builds, packages, verifies
