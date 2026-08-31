@@ -28,12 +28,18 @@ This is the everyday path. Two keys, one dialog, done.
 
 | System | Shortcut |
 | --- | --- |
-| Windows | `Ctrl+Alt+S` |
-| macOS | `Cmd+Alt+S` |
-| Linux | `Ctrl+C, S` |
+| Windows, Linux | `Ctrl+C, S` |
+| macOS | `⌘C, S` |
 
-On Linux, hold `Ctrl` and press `C` then `S`. It is a chord because the desktop
-and the terminal already claim the single-modifier combinations.
+Hold the modifier and press `C` then `S`. **C** for capture, **S** for save. It
+is a chord because single-modifier combinations are already claimed by the
+desktop or the terminal, and because it only engages while the terminal has
+focus and text is selected, which is when `C` means copy rather than interrupt.
+
+> [!NOTE]
+> If you rebind it under **Keyboard Shortcuts**, that is a user keybinding and it
+> overrides this default. With Settings Sync turned on it follows you to your
+> other machines, so a shortcut you set on one computer can appear on another.
 
 The shortcut only works while the terminal has focus and something is selected, so it never gets in the way anywhere else in the editor. Change it under **Keyboard Shortcuts** if you want a different key.
 

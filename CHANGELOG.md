@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.9] - 2026-08-31
+
+One shortcut everywhere: `Ctrl+C, S`, or `⌘C, S` on macOS. Hold the modifier and
+press C for capture, S for save. Earlier versions used a different combination
+per platform, and the single-modifier ones were unreliable: on Linux the desktop
+and the terminal claim them first.
+
+If you rebind the shortcut yourself it overrides this default, and Settings Sync
+carries that binding to your other machines.
+
 ## [1.0.8] - 2026-08-31
 
 The Linux shortcut is now `Ctrl+C, S`: hold `Ctrl` and press `C` then `S`.
