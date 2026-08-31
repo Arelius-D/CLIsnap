@@ -23,8 +23,14 @@ See [CHANGELOG.md](CHANGELOG.md).
 This is the everyday path. Two keys, one dialog, done.
 
 1. Select the output you want in the integrated terminal.
-2. Press **`Ctrl+Alt+S`** (**`Cmd+Alt+S`** on macOS).
+2. Press the shortcut for your system.
 3. Pick where to save it.
+
+| System | Shortcut |
+| --- | --- |
+| Windows | `Ctrl+Alt+S` |
+| macOS | `Cmd+Alt+S` |
+| Linux | `Ctrl+Shift+S` |
 
 The shortcut only works while the terminal has focus and something is selected, so it never gets in the way anywhere else in the editor. Change it under **Keyboard Shortcuts** if you want a different key.
 
@@ -37,7 +43,7 @@ When you want a different theme or frame on a particular shot:
 3. Change the theme, window frame or text size and watch the preview update.
 4. Save as SVG, PNG or HTML, or copy the plain text.
 
-Whatever you change here is remembered, so your next `Ctrl+Alt+S` uses it. **Reset** puts everything back to how the capture was taken.
+Whatever you change here is remembered, so your next capture uses it. **Reset** puts everything back to how the capture was taken.
 
 ## Capturing long output
 
@@ -70,7 +76,7 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `clisnap.format` | `svg` | Format that `Ctrl+Alt+S` writes |
+| `clisnap.format` | `svg` | Format that the capture shortcut writes |
 | `clisnap.frame` | `auto` | Window frame. `auto` follows your operating system |
 | `clisnap.fontSize` | `14` | Text size of the output, in pixels |
 | `clisnap.theme` | *(empty)* | Theme to render with. Empty means whichever theme is active |
@@ -84,7 +90,7 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 **PNG** is rendered at 2x so it stays crisp on a high resolution display. Use it when whatever you are pasting into will not take anything else.
 
 > [!NOTE]
-> Setting `clisnap.format` to `png` makes `Ctrl+Alt+S` open the preview panel first, because turning the image into pixels needs a canvas to draw on.
+> Setting `clisnap.format` to `png` makes the capture shortcut open the preview panel first, because turning the image into pixels needs a canvas to draw on.
 
 ## Themes
 
@@ -110,7 +116,19 @@ The frame around the output matches the operating system the shell is running on
 
 ## Requirements
 
-VS Code 1.93 or later. On Linux you also need `xclip` or `wl-clipboard`.
+VS Code 1.93 or later.
+
+> [!IMPORTANT]
+> **On Linux you must install a clipboard tool.** A stock Ubuntu desktop ships none, and capture cannot work without one.
+>
+> ```shell
+> sudo apt install xclip          # X11
+> sudo apt install wl-clipboard   # Wayland
+> ```
+>
+> This is needed on the machine running VS Code, not on a remote you are connected to.
+
+Works in Remote-SSH, WSL and container windows. The capture reads your local clipboard and saves to your local filesystem, while the frame and title follow the machine the shell is on.
 
 ## Footprint
 

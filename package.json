@@ -2,7 +2,7 @@
   "name": "clisnap",
   "displayName": "CLIsnap",
   "description": "Turn a terminal selection into an SVG, HTML or PNG that looks exactly like your terminal",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "arelius-d",
   "license": "MIT",
   "icon": "assets/brand/icon-256.png",
@@ -65,6 +65,7 @@
         "command": "clisnap.captureAndSave",
         "key": "ctrl+alt+s",
         "mac": "cmd+alt+s",
+        "linux": "ctrl+shift+s",
         "when": "terminalFocus && terminalTextSelected"
       }
     ],

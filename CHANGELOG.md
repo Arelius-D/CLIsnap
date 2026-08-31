@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.7] - 2026-08-31
+
+The shortcut on Linux is now `Ctrl+Shift+S`. Alt is claimed by GNOME and by the
+terminal itself, so pressing it revealed menu accelerators rather than
+capturing. Windows and macOS are unchanged.
+
 ## [1.0.6] - 2026-08-31
 
 Marketplace keywords widened so searches for cli, console, image, snippet,
