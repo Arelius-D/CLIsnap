@@ -114,7 +114,7 @@ VS Code 1.93 or later. On Linux you also need `xclip` or `wl-clipboard`.
 
 ## Footprint
 
-Around 80 KB installed, a quarter of which is the icon, and roughly 45 KB of that is the extension itself. No dependencies, no bundled runtime, no background process, no network access, nothing phoning home.
+A 37 KB download, 81 KB installed, of which the extension itself is 43 KB and the icon 13 KB. No dependencies, no bundled runtime, no background process, no network access, nothing phoning home.
 
 Rendering happens in the extension itself. SVG and HTML are text, so they are written straight out; PNG borrows the editor's own canvas to turn one into pixels. Nothing is uploaded and nothing is tunnelled anywhere.
 
