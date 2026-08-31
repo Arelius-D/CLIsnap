@@ -50,7 +50,9 @@ export async function captureSelection(): Promise<Capture | undefined> {
 
 function validateSource(raw: string | undefined): string | undefined {
   if (!raw) {
-    return "could not read the clipboard's HTML. Is the selection in the terminal?";
+    return process.platform === "linux"
+      ? "could not read the clipboard. Install a clipboard tool: sudo apt install xclip (X11) or wl-clipboard (Wayland)."
+      : "could not read the clipboard's HTML. Is the selection in the terminal?";
   }
   if (/SourceURL:\s*vscode-webview:\/\//i.test(raw)) {
     return "that selection came from a panel, not the terminal. Select in the terminal itself.";

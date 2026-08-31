@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { homedir, tmpdir } from "os";
 import { Row, captureFont, parseCapture, CaptureFont } from "./captureModel";
 import { applyPalette, remapPalette, TerminalPalette } from "./palette";
 import { renderSvg, DEFAULT_SVG_OPTIONS } from "./renderSvg";
@@ -265,13 +266,22 @@ async function handleMessage(message: {
   }
 }
 
+function defaultFolder(): vscode.Uri {
+  const workspace = vscode.workspace.workspaceFolders?.[0]?.uri;
+  if (workspace) {
+    return workspace;
+  }
+  const home = homedir();
+  return home ? vscode.Uri.file(home) : vscode.Uri.file(tmpdir());
+}
+
 export async function save(
   data: Buffer,
   extension: string,
   label: string
 ): Promise<void> {
   const uri = await vscode.window.showSaveDialog({
-    defaultUri: vscode.Uri.file(`clisnap.${extension}`),
+    defaultUri: vscode.Uri.joinPath(defaultFolder(), `clisnap.${extension}`),
     filters: { [label]: [extension] },
   });
   if (!uri) {

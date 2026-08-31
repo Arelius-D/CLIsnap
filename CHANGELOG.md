@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.5] - 2026-08-31
+
+The save dialog opened at the filesystem root on Linux, because a bare filename
+was passed where an absolute path was expected. It now opens in the workspace
+folder, or your home folder when there is no workspace.
+
+When no clipboard tool is installed, the error now names the package to install.
+A stock Ubuntu desktop ships neither `xclip` nor `wl-clipboard`.
+
 ## [1.0.4] - 2026-08-30
 
 Works in Remote-SSH, WSL and container windows. Reading the clipboard needs a
