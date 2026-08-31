@@ -30,7 +30,10 @@ This is the everyday path. Two keys, one dialog, done.
 | --- | --- |
 | Windows | `Ctrl+Alt+S` |
 | macOS | `Cmd+Alt+S` |
-| Linux | `Ctrl+Shift+S` |
+| Linux | `Ctrl+C, S` |
+
+On Linux, hold `Ctrl` and press `C` then `S`. It is a chord because the desktop
+and the terminal already claim the single-modifier combinations.
 
 The shortcut only works while the terminal has focus and something is selected, so it never gets in the way anywhere else in the editor. Change it under **Keyboard Shortcuts** if you want a different key.
 

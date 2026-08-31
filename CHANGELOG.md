@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.8] - 2026-08-31
+
+The Linux shortcut is now `Ctrl+C, S`: hold `Ctrl` and press `C` then `S`.
+Single-modifier combinations do not survive on Linux, where the desktop and the
+terminal claim them first, so a chord is used instead. Windows and macOS keep
+`Ctrl+Alt+S` and `Cmd+Alt+S`.
+
 ## [1.0.7] - 2026-08-31
 
 The shortcut on Linux is now `Ctrl+Shift+S`. Alt is claimed by GNOME and by the
