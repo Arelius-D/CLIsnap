@@ -2,7 +2,7 @@
   "name": "clisnap",
   "displayName": "CLIsnap",
   "description": "Turn a terminal selection into an SVG, HTML or PNG that looks exactly like your terminal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "arelius-d",
   "license": "MIT",
   "icon": "assets/brand/icon-256.png",
@@ -24,11 +24,17 @@
     "terminal",
     "screenshot",
     "capture",
+    "cli",
+    "console",
+    "image",
+    "snippet",
+    "share",
+    "carbon",
     "svg",
     "png",
+    "ansi",
     "export",
-    "theme",
-    "ansi"
+    "theme"
   ],
   "activationEvents": [
     "onCommand:clisnap.capture",

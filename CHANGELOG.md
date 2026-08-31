@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2026-08-31
+
+Marketplace keywords widened so searches for cli, console, image, snippet,
+share and carbon find the extension. Nothing about the extension itself changed.
+
 ## [1.0.5] - 2026-08-31
 
 The save dialog opened at the filesystem root on Linux, because a bare filename
