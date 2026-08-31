@@ -192,7 +192,7 @@ function postRender(): void {
       rows: state.rows.length,
       defaults: {
         themeKey: state.sourceTheme ? themeKey(state.sourceTheme) : undefined,
-        chromeStyle: detectChromeStyle(process.platform),
+        chromeStyle: detectChromeStyle(process.platform, vscode.env.remoteName),
         fontSize: DEFAULT_SVG_OPTIONS.fontSize,
       },
     },
@@ -240,7 +240,7 @@ async function handleMessage(message: {
       state.targetKey = state.sourceTheme
         ? themeKey(state.sourceTheme)
         : undefined;
-      state.chromeStyle = detectChromeStyle(process.platform);
+      state.chromeStyle = detectChromeStyle(process.platform, vscode.env.remoteName);
       state.fontSize = DEFAULT_SVG_OPTIONS.fontSize;
       state.showChrome = true;
       postRender();

@@ -13,7 +13,13 @@ export interface ChromeOptions extends ChromeColors {
   width: number;
 }
 
-export function detectChromeStyle(platform: string): ChromeStyle {
+export function detectChromeStyle(
+  platform: string,
+  remoteName?: string
+): ChromeStyle {
+  if (remoteName) {
+    return "linux";
+  }
   switch (platform) {
     case "win32":
       return "windows";

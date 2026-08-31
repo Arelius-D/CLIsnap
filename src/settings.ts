@@ -25,7 +25,9 @@ export function readPreferences(): Preferences {
 }
 
 export function resolveFrame(frame: FrameSetting): ChromeStyle {
-  return frame === "auto" ? detectChromeStyle(process.platform) : frame;
+  return frame === "auto"
+    ? detectChromeStyle(process.platform, vscode.env.remoteName)
+    : frame;
 }
 
 export async function writePreference<K extends keyof Preferences>(
