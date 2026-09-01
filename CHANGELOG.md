@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0] - 2026-09-01
+
+No keyboard shortcut is set by default. Every combination worth having is
+already claimed by the editor, the terminal or the desktop, and which ones are
+free differs from machine to machine. Open Keyboard Shortcuts with
+`Ctrl+K Ctrl+S`, search CLIsnap, and pick your own. The editor warns you if the
+key is already in use.
+
+HTML output now carries the terminal's font. A font list ending in a comma, as
+macOS reports, produced an empty entry that made the CSS rule invalid, so the
+font was dropped and the text fell back to the browser default. SVG and PNG were
+unaffected because they parse the font differently.
+
 ## [1.0.9] - 2026-08-31
 
 One shortcut everywhere: `Ctrl+C, S`, or `⌘C, S` on macOS. Hold the modifier and

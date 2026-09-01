@@ -2,7 +2,7 @@
   "name": "clisnap",
   "displayName": "CLIsnap",
   "description": "Turn a terminal selection into an SVG, HTML or PNG that looks exactly like your terminal",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "publisher": "arelius-d",
   "license": "MIT",
   "icon": "assets/brand/icon-256.png",
@@ -60,14 +60,6 @@
         "title": "CLIsnap: Render a Text File"
       }
     ],
-    "keybindings": [
-      {
-        "command": "clisnap.captureAndSave",
-        "key": "ctrl+c ctrl+s",
-        "mac": "cmd+c cmd+s",
-        "when": "terminalFocus && terminalTextSelected"
-      }
-    ],
     "configuration": {
       "title": "CLIsnap",
       "properties": {
@@ -113,7 +105,7 @@
           "enumDescriptions": [
             "Vector, scalable, editable",
             "Self-contained document with live text",
-            "Raster at 2x — opens the preview panel, since rasterising needs a canvas"
+            "Raster at 2x. Opens the preview panel, since rasterizing needs a canvas"
           ],
           "description": "Format written by \"Capture and Save\"."
         }

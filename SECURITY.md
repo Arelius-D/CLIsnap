@@ -38,9 +38,9 @@ It makes **no network requests**, opens no ports, runs no background process, an
 
 **Terminal output is untrusted input.** Anyone can print anything into a terminal, including markup, and CLIsnap turns that into an SVG or HTML document you might then send to someone else. If crafted output could smuggle live content into a saved file, that file would run it in whoever opens it.
 
-Two deliberate defences:
+Two deliberate defenses:
 
-- The parser rebuilds the document from a **whitelist**. Only `div`, `span` and `br` survive, and only a fixed set of colour and text-decoration properties with values matched against strict patterns. Everything else is discarded rather than escaped.
+- The parser rebuilds the document from a **whitelist**. Only `div`, `span` and `br` survive, and only a fixed set of color and text-decoration properties with values matched against strict patterns. Everything else is discarded rather than escaped.
 - The preview panel runs under a Content Security Policy with **no inline styles or scripts**. Styles from a capture are hoisted into a nonce-carrying stylesheet, never inline attributes.
 
 If you find output that defeats either of those, that is the report I most want to see.
@@ -67,4 +67,4 @@ If you find output that defeats either of those, that is the report I most want 
 
 ## Supported versions
 
-CLIsnap is pre-1.0. Only the latest published version receives fixes.
+Only the latest published version receives fixes.

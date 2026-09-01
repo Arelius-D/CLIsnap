@@ -71,7 +71,7 @@ export function renderHtml(rows: Row[], options: HtmlOptions): string {
 .clisnap .chrome{display:block}
 .clisnap .body{
   padding:${options.padding}px;
-  font-family:${escapeHtml(options.fontFamily)};
+  font-family:${cssFontFamily(options.fontFamily)};
   font-size:${options.fontSize}px;
   line-height:${options.lineHeight};
   color:${options.foreground};
@@ -133,6 +133,15 @@ function declarationsFor(style: RunStyle): string {
     parts.push(`opacity:${style.opacity}`);
   }
   return parts.join(";");
+}
+
+function cssFontFamily(list: string): string {
+  return list
+    .split(",")
+    .map((name) => name.trim().replace(/["'\\<>{};]/g, ""))
+    .filter(Boolean)
+    .map((name) => (/^[A-Za-z][A-Za-z0-9-]*$/.test(name) ? name : `"${name}"`))
+    .join(", ");
 }
 
 function escapeHtml(text: string): string {

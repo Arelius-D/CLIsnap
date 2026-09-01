@@ -44,7 +44,12 @@ export function captureFont(fragment: string): CaptureFont {
   if (!wrapper) {
     return {};
   }
-  const family = /font-family:\s*([^;]+)/i.exec(wrapper)?.[1]?.trim();
+  const family = /font-family:\s*([^;]+)/i
+    .exec(wrapper)?.[1]
+    ?.split(",")
+    .map((name) => name.trim())
+    .filter(Boolean)
+    .join(", ");
   const size = /font-size:\s*([\d.]+)px/i.exec(wrapper)?.[1];
   return {
     family: family || undefined,

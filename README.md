@@ -4,7 +4,7 @@
 
 [![Version](https://img.shields.io/github/v/release/Arelius-D/CLIsnap?label=version&color=blue)](https://github.com/Arelius-D/CLIsnap/releases) [![Marketplace installs](https://vsmarketplacebadges.dev/installs/arelius-d.clisnap.svg?label=marketplace%20installs&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=arelius-d.clisnap) [![License](https://img.shields.io/github/license/Arelius-D/CLIsnap?color=blue)](https://github.com/Arelius-D/CLIsnap/blob/main/LICENSE) [![VS Code](https://img.shields.io/badge/VS_Code-1.93%2B-%23007ACC.svg?logo=visualstudiocode&logoColor=white)](#requirements) [![Formats](https://img.shields.io/badge/Formats-SVG_%7C_PNG_%7C_HTML-blueviolet.svg)](#output-formats) [![Deps](https://img.shields.io/badge/Dependencies-none-brightgreen.svg)](#footprint) [![Network](https://img.shields.io/badge/Network_access-none-brightgreen.svg)](#footprint)
 
-Select output in the VS Code terminal, press a key, get an SVG, HTML or PNG.
+Select output in the VS Code terminal, run one command, get an SVG, HTML or PNG.
 
 **By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change if you want to: any theme you have installed, any window frame, any size.
 
@@ -20,35 +20,31 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## Capture and save
 
-This is the everyday path. Two keys, one dialog, done.
+This is the everyday path. One command, one dialog, done.
 
 1. Select the output you want in the integrated terminal.
-2. Press the shortcut for your system.
+2. Press **`Ctrl+Shift+P`** (**`⌘⇧P`** on macOS) and run **CLIsnap: Capture and Save**.
 3. Pick where to save it.
 
-| System | Shortcut |
-| --- | --- |
-| Windows, Linux | `Ctrl+C, S` |
-| macOS | `⌘C, S` |
+## Give it a shortcut
 
-Hold the modifier and press `C` then `S`. **C** for capture, **S** for save. It
-is a chord because single-modifier combinations are already claimed by the
-desktop or the terminal, and because it only engages while the terminal has
-focus and text is selected, which is when `C` means copy rather than interrupt.
+CLIsnap ships without one, on purpose (after several attempts to unify the shortcuts). Every combination worth having is already taken by the editor, the terminal or the desktop, and which ones are free differs between machines. Yours is the only keyboard that matters, so pick the key yourself:
+
+1. Press **`Ctrl+K Ctrl+S`** (**`⌘K ⌘S`** on macOS) to open Keyboard Shortcuts.
+2. Search for **CLIsnap**. All three commands are listed.
+3. Click the one you want, press your key, and press Enter.
+
+The editor tells you if the key already does something else, so you find out before it costs you a shortcut you rely on rather than after.
 
 > [!NOTE]
-> If you rebind it under **Keyboard Shortcuts**, that is a user keybinding and it
-> overrides this default. With Settings Sync turned on it follows you to your
-> other machines, so a shortcut you set on one computer can appear on another.
-
-The shortcut only works while the terminal has focus and something is selected, so it never gets in the way anywhere else in the editor. Change it under **Keyboard Shortcuts** if you want a different key.
+> With Settings Sync turned on in VS Code, the shortcut you set follows you to your other machines, including ones running a different operating system.
 
 ## Capture and adjust
 
 When you want a different theme or frame on a particular shot:
 
 1. Select the output.
-2. **`Ctrl+Shift+P`** and run **CLIsnap: Capture and Preview**.
+2. Press **`Ctrl+Shift+P`** (**`⌘⇧P`** on macOS) and run **CLIsnap: Capture and Preview**.
 3. Change the theme, window frame or text size and watch the preview update.
 4. Save as SVG, PNG or HTML, or copy the plain text.
 
@@ -71,7 +67,7 @@ Some output is too long to select. A terminal only keeps the last 1000 lines by 
    git log --oneline --graph -n 5000 > history.log
    ```
 
-2. In VS Code, press **`Ctrl+Shift+P`** and run **CLIsnap: Render a Text File**.
+2. In VS Code, press **`Ctrl+Shift+P`** (**`⌘⇧P`** on macOS) and run **CLIsnap: Render a Text File**.
 3. Pick the file.
 
 From there it behaves exactly like a terminal capture: same themes, same frames, same three formats.
@@ -85,7 +81,7 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `clisnap.format` | `svg` | Format that the capture shortcut writes |
+| `clisnap.format` | `svg` | Format that **Capture and Save** writes |
 | `clisnap.frame` | `auto` | Window frame. `auto` follows your operating system |
 | `clisnap.fontSize` | `14` | Text size of the output, in pixels |
 | `clisnap.theme` | *(empty)* | Theme to render with. Empty means whichever theme is active |
@@ -99,11 +95,11 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 **PNG** is rendered at 2x so it stays crisp on a high resolution display. Use it when whatever you are pasting into will not take anything else.
 
 > [!NOTE]
-> Setting `clisnap.format` to `png` makes the capture shortcut open the preview panel first, because turning the image into pixels needs a canvas to draw on.
+> Setting `clisnap.format` to `png` makes **Capture and Save** open the preview panel first, because turning the image into pixels needs a canvas to draw on.
 
 ## Themes
 
-The theme list is every color theme installed in your editor, not a set of themes bundled with CLIsnap. Pick any of them and the capture is recoloured, so ANSI red becomes that theme's red.
+The theme list is every color theme installed in your editor, not a set of themes bundled with CLIsnap. Pick any of them and the capture is recolored, so ANSI red becomes that theme's red.
 
 Colors a program picked for itself, meaning 256 color and 24 bit values, are left exactly as they were. Those were never the theme's to change.
 
@@ -143,7 +139,7 @@ Works in Remote-SSH, WSL and container windows. The capture reads your local cli
 
 A 37 KB download, 81 KB installed, of which the extension itself is 43 KB and the icon 13 KB. No dependencies, no bundled runtime, no background process, no network access, nothing phoning home.
 
-Rendering happens in the extension itself. SVG and HTML are text, so they are written straight out; PNG borrows the editor's own canvas to turn one into pixels. Nothing is uploaded and nothing is tunnelled anywhere.
+Rendering happens in the extension itself. SVG and HTML are text, so they are written straight out; PNG borrows the editor's own canvas to turn one into pixels. Nothing is uploaded and nothing is tunneled anywhere.
 
 ## Known limits
 
