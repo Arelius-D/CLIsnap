@@ -36,11 +36,6 @@
     "export",
     "theme"
   ],
-  "activationEvents": [
-    "onCommand:clisnap.capture",
-    "onCommand:clisnap.captureAndSave",
-    "onCommand:clisnap.captureFromFile"
-  ],
   "main": "./dist/extension.js",
   "extensionKind": [
     "ui"
