@@ -6,11 +6,11 @@
 
 Select output in the VS Code terminal, run one command, get an SVG, HTML or PNG.
 
-**By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change: any window frame, any size, and any theme you have installed, whether or not your editor is currently wearing it.
+**By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change: any window frame, any size, and any theme you have installed, whether or not your IDE is currently using it.
 
 <img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="230"> <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="230">
 
-The same capture twice. On the left, VS Code Dark with a Windows frame. On the right, Catppuccin Macchiato with a macOS frame. Neither is a CLIsnap theme; both came from the editor.
+The same capture twice. On the left, VS Code Dark with a Windows frame. On the right, Catppuccin Macchiato with a macOS frame. Neither is a CLIsnap theme; both are themes already installed in the IDE.
 
 ## Install
 
@@ -28,24 +28,24 @@ This is the everyday path. One command, one dialog, done.
 
 ## Give it a shortcut
 
-CLIsnap ships without one, on purpose (after several attempts to unify the shortcuts). Every combination worth having is already taken by the editor, the terminal or the desktop, and which ones are free differs between machines. Yours is the only keyboard that matters, so pick the key yourself:
+CLIsnap ships without one, on purpose (after several attempts to unify the shortcuts). Every combination worth having is already taken by the IDE, the terminal or the desktop, and which ones are free differs between machines. Yours is the only keyboard that matters, so pick the key yourself:
 
 1. Press **`Ctrl+K Ctrl+S`** (**`⌘K ⌘S`** on macOS) to open Keyboard Shortcuts.
 2. Search for **CLIsnap**. All three commands are listed.
 3. Click the one you want, press your key, and press Enter.
 
-The editor tells you if the key already does something else, so you find out before it costs you a shortcut you rely on rather than after.
+VS Code tells you if the key already does something else, so you find out before it costs you a shortcut you rely on rather than after.
 
 > [!NOTE]
 > With Settings Sync turned on in VS Code, the shortcut you set follows you to your other machines, including ones running a different operating system.
 
 ## Capture and adjust
 
-When you want a different theme or frame on a particular shot:
+When you want a different theme, font or frame on a particular shot:
 
 1. Select the output.
 2. Press **`Ctrl+Shift+P`** (**`⌘⇧P`** on macOS) and run **CLIsnap: Capture and Preview**.
-3. Change the theme, window frame or text size and watch the preview update.
+3. Change the theme, font, window frame, text size, line height or padding and watch the preview update.
 4. Save as SVG, PNG or HTML, or copy the plain text.
 
 Whatever you change here is remembered, so your next capture uses it. **Reset** puts everything back to how the capture was taken.
@@ -102,9 +102,9 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 
 ## Themes
 
-The theme list is every color theme installed in your editor, not a set of themes bundled with CLIsnap. Pick any of them and the capture is recolored, so ANSI red becomes that theme's red.
+The theme list is every color theme installed in your IDE, not a set of themes bundled with CLIsnap. Pick any of them and the capture is recolored, so ANSI red becomes that theme's red.
 
-**The theme you render with has nothing to do with the theme you work in.** Install one because you like how it photographs, never switch your editor to it, and render with it anyway. Install a dozen and choose a different one per capture. Your editor stays exactly as you like it while the output goes wherever you want it, which is as fine-grained as you care to make it: the palette is a per-capture choice, not a setting you have to live in.
+**The theme you render with has nothing to do with the theme you work in.** Install one because you like how it photographs, never switch your IDE to it, and render with it anyway. Install a dozen and choose a different one per capture. Your IDE stays exactly as you like it while the output goes wherever you want it, which is as fine-grained as you care to make it: the palette is a per-capture choice, not a setting you have to live in.
 
 Colors a program picked for itself, meaning 256 color and 24 bit values, are left exactly as they were. Those were never the theme's to change.
 
@@ -112,7 +112,7 @@ Your active theme is marked **· captured** in the list.
 
 ## Fonts
 
-The font list is the fonts you have already told your editor about, read from `terminal.integrated.fontFamily`, `editor.fontFamily` and the other font settings. Nothing is bundled, and because your editor resolves those settings to the right defaults for the machine it is on, the list is correct on Windows, macOS and Linux without CLIsnap deciding anything. The font your terminal reported is marked **· captured** and is what you get until you change it.
+The font list is the fonts you have already configured in your IDE, read from `terminal.integrated.fontFamily`, `editor.fontFamily` and the other font settings. Nothing is bundled, and because your IDE resolves those settings to the right defaults for the machine it is on, the list is correct on Windows, macOS and Linux without CLIsnap deciding anything. The font your terminal reported is marked **· captured** and is what you get until you change it.
 
 `clisnap.fontFamily` takes anything you type rather than only what is in the list, including a list of your own with fallbacks, such as `MesloLGS NF, Cascadia Mono`.
 
@@ -159,9 +159,9 @@ Works in Remote-SSH, WSL and container windows. The capture reads your local cli
 
 ## Footprint
 
-A 37 KB download, 81 KB installed, of which the extension itself is 43 KB and the icon 13 KB. No dependencies, no bundled runtime, no background process, no network access, nothing phoning home.
+A 41 KB download, 95 KB installed, of which the extension itself is 47 KB and the icon 13 KB. No dependencies, no bundled runtime, no background process, no network access, nothing phoning home.
 
-Rendering happens in the extension itself. SVG and HTML are text, so they are written straight out; PNG borrows the editor's own canvas to turn one into pixels. Nothing is uploaded and nothing is tunneled anywhere.
+Rendering happens in the extension itself. SVG and HTML are text, so they are written straight out; PNG borrows a canvas from the preview panel to turn one into pixels. Nothing is uploaded and nothing is tunneled anywhere.
 
 ## Known limits
 
