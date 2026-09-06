@@ -5,12 +5,12 @@ const FONT_SETTINGS = [
   "editor.fontFamily",
   "debug.console.fontFamily",
   "notebook.output.fontFamily",
-  "markdown.preview.fontFamily",
   "scm.inputFontFamily",
   "chat.editor.fontFamily",
 ];
 
 const GENERIC = new Set([
+  "default",
   "monospace",
   "sans-serif",
   "serif",

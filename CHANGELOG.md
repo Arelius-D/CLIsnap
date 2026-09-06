@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.2] - 2026-09-06
+
+The font list offered fonts that were never going to work. It read
+`markdown.preview.fontFamily`, which styles rendered markdown and is
+proportional by design, so its default put `-apple-system`,
+`BlinkMacSystemFont`, `Segoe WPC`, `Segoe UI`, `Ubuntu` and `Droid Sans` in a
+list meant for terminal output. Most of those are not installed and quietly fell
+back to the same font, and `Segoe UI` is proportional. That setting is no longer
+read.
+
+`default` is gone from the list too. It is the value `debug.console.fontFamily`
+and the other editor font settings carry when they are following the editor
+font, so it was a word rather than a font.
+
 ## [1.2.1] - 2026-09-06
 
 Readme only. It called VS Code "the editor" in ten places while calling it
