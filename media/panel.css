@@ -36,7 +36,10 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.num.wide { width: 3.4ch; }
+
 #theme { max-width: 240px; }
+#font { max-width: 200px; }
 
 select, input[type="range"] {
   background: var(--vscode-input-background);

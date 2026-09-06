@@ -6,7 +6,7 @@
 
 Select output in the VS Code terminal, run one command, get an SVG, HTML or PNG.
 
-**By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change if you want to: any theme you have installed, any window frame, any size.
+**By default you get exactly what you were looking at.** Your theme's colors, your terminal's font, your operating system's window frame. CLIsnap does not ship a single palette or font of its own, so nothing is invented and nothing needs configuring. Everything past that point is yours to change: any window frame, any size, and any theme you have installed, whether or not your editor is currently wearing it.
 
 <img src="assets/screenshots/vscode-dark-windows-frame.png" alt="A capture rendered with the VS Code Dark theme and a Windows window frame" width="230"> <img src="assets/screenshots/catppuccin-macchiato-macos-frame.png" alt="The same capture rendered with the Catppuccin Macchiato theme and a macOS window frame" width="230">
 
@@ -84,6 +84,9 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 | `clisnap.format` | `svg` | Format that **Capture and Save** writes |
 | `clisnap.frame` | `auto` | Window frame. `auto` follows your operating system |
 | `clisnap.fontSize` | `14` | Text size of the output, in pixels |
+| `clisnap.fontFamily` | *(empty)* | Font to render with. Empty means the font the terminal reported |
+| `clisnap.lineHeight` | `1.5` | Height of each line, as a multiple of the font size |
+| `clisnap.padding` | `16` | Space between the output and the edge of the image, in pixels |
 | `clisnap.theme` | *(empty)* | Theme to render with. Empty means whichever theme is active |
 
 ## Output formats
@@ -101,9 +104,28 @@ Color is not read from the file yet. Escape codes in a log written with `--color
 
 The theme list is every color theme installed in your editor, not a set of themes bundled with CLIsnap. Pick any of them and the capture is recolored, so ANSI red becomes that theme's red.
 
+**The theme you render with has nothing to do with the theme you work in.** Install one because you like how it photographs, never switch your editor to it, and render with it anyway. Install a dozen and choose a different one per capture. Your editor stays exactly as you like it while the output goes wherever you want it, which is as fine-grained as you care to make it: the palette is a per-capture choice, not a setting you have to live in.
+
 Colors a program picked for itself, meaning 256 color and 24 bit values, are left exactly as they were. Those were never the theme's to change.
 
 Your active theme is marked **· captured** in the list.
+
+## Fonts
+
+The font list is the fonts you have already told your editor about, read from `terminal.integrated.fontFamily`, `editor.fontFamily` and the other font settings. Nothing is bundled, and because your editor resolves those settings to the right defaults for the machine it is on, the list is correct on Windows, macOS and Linux without CLIsnap deciding anything. The font your terminal reported is marked **· captured** and is what you get until you change it.
+
+`clisnap.fontFamily` takes anything you type rather than only what is in the list, including a list of your own with fallbacks, such as `MesloLGS NF, Cascadia Mono`.
+
+Changing the font does not move anything. Columns in an SVG are pinned to an exact width, so swapping the font changes the letters and nothing else: same alignment, same image size. That holds for PNG too, since it is drawn from the SVG.
+
+> [!NOTE]
+> HTML is the exception, because its text is live rather than positioned. Any monospace font is fine, which is every font the list can offer you. A proportional font typed in by hand will skew the HTML while leaving the SVG and PNG exact.
+
+Whoever opens the file needs the font installed to see it. If they do not have it, the fallback stack takes over and the columns still line up, so the layout survives even when the letters change.
+
+## Line height and padding
+
+Both are sliders in the preview, and both reach SVG, PNG and HTML together. Padding is the space between the text and the edge of the image; drop it to `0` for a tight crop, or raise it for room around the output.
 
 ## Window frames
 
@@ -117,7 +139,7 @@ The frame around the output matches the operating system the shell is running on
 | Attributes | bold, dim, italic, underline, strikethrough, reverse video |
 | Layout | box drawing, tables and ASCII art keep their alignment |
 | Wide characters | CJK and emoji take two cells, the same as in the terminal |
-| Font | whatever your terminal was rendering with |
+| Font | whatever your terminal was rendering with, unless you pick another |
 
 ## Requirements
 

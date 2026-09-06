@@ -9,6 +9,11 @@ const chromeSelect = document.getElementById("chrome");
 const showChrome = document.getElementById("show-chrome");
 const fontSize = document.getElementById("font-size");
 const fontSizeValue = document.getElementById("font-size-value");
+const fontSelect = document.getElementById("font");
+const lineHeight = document.getElementById("line-height");
+const lineHeightValue = document.getElementById("line-height-value");
+const padding = document.getElementById("padding");
+const paddingValue = document.getElementById("padding-value");
 
 let currentSvg = "";
 
@@ -27,6 +32,23 @@ fontSize.addEventListener("input", () => {
 });
 fontSize.addEventListener("change", () =>
   vscode.postMessage({ type: "commitFontSize", value: Number(fontSize.value) })
+);
+fontSelect.addEventListener("change", () =>
+  vscode.postMessage({ type: "setFontFamily", value: fontSelect.value })
+);
+lineHeight.addEventListener("input", () => {
+  lineHeightValue.textContent = String(Number(lineHeight.value));
+  vscode.postMessage({ type: "setLineHeight", value: Number(lineHeight.value) });
+});
+lineHeight.addEventListener("change", () =>
+  vscode.postMessage({ type: "commitLineHeight", value: Number(lineHeight.value) })
+);
+padding.addEventListener("input", () => {
+  paddingValue.textContent = padding.value;
+  vscode.postMessage({ type: "setPadding", value: Number(padding.value) });
+});
+padding.addEventListener("change", () =>
+  vscode.postMessage({ type: "commitPadding", value: Number(padding.value) })
 );
 
 document.getElementById("save-svg").addEventListener("click", () =>
@@ -50,6 +72,27 @@ function markDefault(select, value, suffix) {
     }
     option.textContent =
       option.value === value ? `${option.dataset.base} ${suffix}` : option.dataset.base;
+  }
+}
+
+function fillFonts(names, captured) {
+  const signature = JSON.stringify([captured, names]);
+  if (fontSelect.dataset.signature === signature) {
+    return;
+  }
+  fontSelect.dataset.signature = signature;
+  fontSelect.textContent = "";
+
+  const asCaptured = document.createElement("option");
+  asCaptured.value = "";
+  asCaptured.textContent = captured || "Terminal font";
+  fontSelect.appendChild(asCaptured);
+
+  for (const name of names) {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    fontSelect.appendChild(option);
   }
 }
 
@@ -101,13 +144,24 @@ window.addEventListener("message", (event) => {
   showChrome.checked = s.showChrome;
   fontSize.value = s.fontSize;
   fontSizeValue.textContent = s.fontSize;
+  fillFonts(s.fonts, s.capturedFont);
+  fontSelect.value = s.fontFamily;
+  markDefault(fontSelect, "", "· captured");
+  lineHeight.value = s.lineHeight;
+  lineHeightValue.textContent = String(Number(s.lineHeight));
+  padding.value = s.padding;
+  paddingValue.textContent = s.padding;
   const modified =
     s.targetKey !== s.defaults.themeKey ||
     s.chromeStyle !== s.defaults.chromeStyle ||
     s.fontSize !== s.defaults.fontSize ||
+    s.fontFamily !== "" ||
+    s.lineHeight !== s.defaults.lineHeight ||
+    s.padding !== s.defaults.padding ||
     !s.showChrome;
   document.getElementById("reset").disabled = !modified;
 
   meta.textContent =
-    `${s.rows} rows · font ${s.font}` + (modified ? " · customised" : " · as captured");
+    `${s.rows} rows · font ${s.fontFamily || s.font}` +
+    (modified ? " · customised" : " · as captured");
 });

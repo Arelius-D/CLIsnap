@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.0] - 2026-09-06
+
+Pick the font. The list is the fonts you have already configured in your editor,
+read from `terminal.integrated.fontFamily`, `editor.fontFamily` and the other
+font settings, so nothing is bundled and the list is right on every operating
+system without CLIsnap knowing which one it is on. The font the terminal
+reported is marked `· captured` and stays the default. `clisnap.fontFamily`
+takes anything you type, including a list such as `MesloLGS NF, Cascadia Mono`.
+
+Line height and padding are sliders now, alongside the size one. Both were fixed
+at 1.5 and 16 pixels, and both already reached SVG, PNG and HTML, so all three
+formats follow them together.
+
+Reset puts the font, line height and padding back with everything else.
+
 ## [1.1.0] - 2026-09-01
 
 No keyboard shortcut is set by default. Every combination worth having is

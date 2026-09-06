@@ -15,6 +15,7 @@ import {
   themeKey,
 } from "./themeService";
 import { Capture } from "./capture";
+import { fontOptions } from "./fonts";
 import {
   clearPreferences,
   readPreferences,
@@ -31,6 +32,9 @@ export interface PanelState {
   targetKey?: string;
   chromeStyle: ChromeStyle;
   fontSize: number;
+  fontFamily: string;
+  lineHeight: number;
+  padding: number;
   showChrome: boolean;
   title: string;
 }
@@ -62,6 +66,9 @@ export function buildState(capture: Capture): PanelState {
     targetKey: prefs.themeKey || (source ? themeKey(source) : undefined),
     chromeStyle: resolveFrame(prefs.frame === "none" ? "windows" : prefs.frame),
     fontSize: prefs.fontSize,
+    fontFamily: prefs.fontFamily,
+    lineHeight: prefs.lineHeight,
+    padding: prefs.padding,
     showChrome: prefs.frame !== "none",
     title: capture.terminalName?.trim() || "Terminal",
   };
@@ -125,14 +132,17 @@ function renderInputs(from?: PanelState) {
     chromeColors = chromeColorsOf(target);
   }
 
-  const fontFamily = s.font.family
-    ? `${s.font.family}, ${DEFAULT_SVG_OPTIONS.fontFamily}`
+  const chosen = s.fontFamily.trim() || s.font.family;
+  const fontFamily = chosen
+    ? `${chosen}, ${DEFAULT_SVG_OPTIONS.fontFamily}`
     : DEFAULT_SVG_OPTIONS.fontFamily;
 
   return {
     rows,
     fontFamily,
     fontSize: s.fontSize,
+    lineHeight: s.lineHeight,
+    padding: s.padding,
     background: palette.background,
     foreground: palette.foreground,
     chrome: s.showChrome
@@ -153,6 +163,8 @@ export function currentSvg(from?: PanelState): string {
     ...DEFAULT_SVG_OPTIONS,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
+    lineHeight: input.lineHeight,
+    padding: input.padding,
     background: input.background,
     foreground: input.foreground,
     chrome: input.chrome,
@@ -167,9 +179,9 @@ export function currentHtml(from?: PanelState): string {
   return renderHtml(input.rows, {
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    lineHeight: DEFAULT_SVG_OPTIONS.lineHeight,
+    lineHeight: input.lineHeight,
     advanceRatio: DEFAULT_SVG_OPTIONS.advanceRatio,
-    padding: DEFAULT_SVG_OPTIONS.padding,
+    padding: input.padding,
     background: input.background,
     foreground: input.foreground,
     title: (from ?? state)?.title ?? "CLIsnap",
@@ -188,13 +200,20 @@ function postRender(): void {
       targetKey: state.targetKey,
       chromeStyle: state.chromeStyle,
       fontSize: state.fontSize,
+      fontFamily: state.fontFamily,
+      lineHeight: state.lineHeight,
+      padding: state.padding,
       showChrome: state.showChrome,
       font: state.font.family ?? "(terminal font not reported)",
+      capturedFont: state.font.family ?? "",
+      fonts: fontOptions(state.font.family, state.fontFamily),
       rows: state.rows.length,
       defaults: {
         themeKey: state.sourceTheme ? themeKey(state.sourceTheme) : undefined,
         chromeStyle: detectChromeStyle(process.platform, vscode.env.remoteName),
         fontSize: DEFAULT_SVG_OPTIONS.fontSize,
+        lineHeight: DEFAULT_SVG_OPTIONS.lineHeight,
+        padding: DEFAULT_SVG_OPTIONS.padding,
       },
     },
   });
@@ -237,12 +256,34 @@ async function handleMessage(message: {
     case "commitFontSize":
       await writePreference("fontSize", Number(message.value));
       break;
+    case "setFontFamily":
+      state.fontFamily = String(message.value);
+      postRender();
+      await writePreference("fontFamily", state.fontFamily);
+      break;
+    case "setLineHeight":
+      state.lineHeight = Number(message.value);
+      postRender();
+      break;
+    case "commitLineHeight":
+      await writePreference("lineHeight", Number(message.value));
+      break;
+    case "setPadding":
+      state.padding = Number(message.value);
+      postRender();
+      break;
+    case "commitPadding":
+      await writePreference("padding", Number(message.value));
+      break;
     case "reset":
       state.targetKey = state.sourceTheme
         ? themeKey(state.sourceTheme)
         : undefined;
       state.chromeStyle = detectChromeStyle(process.platform, vscode.env.remoteName);
       state.fontSize = DEFAULT_SVG_OPTIONS.fontSize;
+      state.fontFamily = "";
+      state.lineHeight = DEFAULT_SVG_OPTIONS.lineHeight;
+      state.padding = DEFAULT_SVG_OPTIONS.padding;
       state.showChrome = true;
       postRender();
       await clearPreferences();
@@ -331,13 +372,24 @@ function pageHtml(
       </select>
     </label>
     <label><input type="checkbox" id="show-chrome" checked> Window frame</label>
+    <label>Font <select id="font"></select></label>
   </div>
   <div class="row">
     <label>Size
       <input type="range" id="font-size" min="8" max="32" step="1">
       <span id="font-size-value" class="num"></span>px
     </label>
-    <button id="reset" title="Back to the theme and frame this capture was taken with">Reset</button>
+    <label>Line height
+      <input type="range" id="line-height" min="1" max="2.5" step="0.05">
+      <span id="line-height-value" class="num wide"></span>
+    </label>
+    <label>Padding
+      <input type="range" id="padding" min="0" max="64" step="2">
+      <span id="padding-value" class="num"></span>px
+    </label>
+  </div>
+  <div class="row">
+    <button id="reset" title="Back to the theme, font and frame this capture was taken with">Reset</button>
     <button id="copy-text">Copy text</button>
     <span class="spacer"></span>
     <button id="save-svg" class="primary">Save SVG</button>
