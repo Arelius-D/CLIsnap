@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1] - 2026-09-06
+
+Readme only. It called VS Code "the editor" in ten places while calling it
+VS Code in seven others, and said PNG borrows a canvas from the editor when the
+canvas belongs to the preview panel. The footprint figures and the list of what
+the preview can change were both left over from earlier versions.
+
 ## [1.2.0] - 2026-09-06
 
 Pick the font. The list is the fonts you have already configured in your editor,
